@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * <p>
+ * API规则信息 服务实现类
+ * </p>
+ *
  * @author 任贵杰
- * @version v1
- * @summary
  * @since 2018/5/17
  */
 @Service

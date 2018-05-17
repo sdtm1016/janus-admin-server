@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsaa.janus.admin.dao.ServiceErrorCodeDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.ServiceErrorCode">
+        <id column="id" property="id"/>
+        <result column="api_id" property="apiId"/>
+        <result column="code" property="code"/>
+        <result column="message" property="message"/>
+        <result column="description" property="description"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+</mapper>

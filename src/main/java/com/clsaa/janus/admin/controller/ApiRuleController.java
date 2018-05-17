@@ -20,17 +20,6 @@ import reactor.core.publisher.Mono;
 @RestController
 @CrossOrigin
 public class ApiRuleController {
-
     @Autowired
     private ApiRuleService apiRuleService;
-
-    @GetMapping(value = "/v1/ApiRule/{id}")
-    public Mono<ApiRule> getApiRule(@PathVariable("id") String id) {
-        return Mono.create(monoSink -> monoSink.success(this.apiRuleService.getApiRuleById(id)));
-    }
-
-    @GetMapping(value = "/v1/exception")
-    public void getException() {
-        BizAssert.justDenied(BizCodes.ERROR_INSERT.getCode(), java.io.File.separator);
-    }
 }

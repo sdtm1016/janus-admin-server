@@ -6,20 +6,21 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+
 /**
- * API规则持久层对象
+ * API部署信息持久层对象
  *
- * @author 任贵杰
- * @since 2018/5/17
+ * @author 任贵杰 812022339@qq.com
+ * @since 2018-05-17
  */
 @Getter
 @Setter
-public class ApiRule implements Serializable {
+public class ApiDeploy implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 主键id
      */
     private String id;
     /**
@@ -27,17 +28,17 @@ public class ApiRule implements Serializable {
      */
     private String apiId;
     /**
-     * 规则id,t_ip_strategy.id或t_traffic_limit.id,t_auth.id等附加在api上的规则
-     */
-    private String ruleId;
-    /**
      * 环境id,t_environment.id
      */
     private String environmentId;
     /**
-     * 类型,1为ip访问控制,2为流量限制,3为权限控制
+     * 版本号
      */
-    private Integer type;
+    private String version;
+    /**
+     * 描述
+     */
+    private String description;
     /**
      * 创建时间
      */
@@ -46,4 +47,8 @@ public class ApiRule implements Serializable {
      * 创建人
      */
     private String cuser;
+    /**
+     * 状态,0为已过期,1为已发布
+     */
+    private Integer status;
 }

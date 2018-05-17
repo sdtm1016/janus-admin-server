@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsaa.janus.admin.dao.ApiDeployDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.ApiDeploy">
+        <id column="id" property="id"/>
+        <result column="api_id" property="apiId"/>
+        <result column="environment_id" property="environmentId"/>
+        <result column="version" property="version"/>
+        <result column="description" property="description"/>
+        <result column="ctime" property="ctime"/>
+        <result column="cuser" property="cuser"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+</mapper>

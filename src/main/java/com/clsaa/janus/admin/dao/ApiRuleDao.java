@@ -1,12 +1,15 @@
 package com.clsaa.janus.admin.dao;
 
+
 import com.clsaa.janus.admin.entity.po.ApiRule;
 import org.apache.ibatis.annotations.Param;
 
 /**
+ * <p>
+ * API规则信息 Mapper 接口
+ * </p>
+ *
  * @author 任贵杰
- * @version v1
- * @summary ApiRuleDao
  * @since 2018/5/17
  */
 public interface ApiRuleDao {

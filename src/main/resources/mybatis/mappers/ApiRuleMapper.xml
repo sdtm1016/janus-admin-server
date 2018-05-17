@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clsaa.janus.admin.dao.ApiRuleDao">
 
-  <!-- 通用查询映射结果 -->
-  <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.ApiRule">
-    <id column="id" property="id"/>
-    <id column="api_id" property="apiId"/>
-    <id column="rule_id" property="ruleId"/>
-    <id column="environment_id" property="environmentId"/>
-    <id column="type" property="type"/>
-    <id column="ctime" property="ctime"/>
-    <id column="cuser" property="cuser"/>
-  </resultMap>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.ApiRule">
+        <id column="id" property="id"/>
+        <id column="api_id" property="apiId"/>
+        <id column="rule_id" property="ruleId"/>
+        <id column="environment_id" property="environmentId"/>
+        <id column="type" property="type"/>
+        <id column="ctime" property="ctime"/>
+        <id column="cuser" property="cuser"/>
+    </resultMap>
 
-  <select id="getById" resultMap="BaseResultMap">
-    SELECT *
-    FROM `t_api_rule`
-    WHERE `id` = #{id}
-  </select>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api_rule`
+        WHERE `id` = #{id}
+    </select>
 
 </mapper>
