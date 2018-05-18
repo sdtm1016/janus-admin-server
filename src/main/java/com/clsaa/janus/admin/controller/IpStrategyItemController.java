@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * IP控制策略项,包含具体要控制的IP信息 前端控制器
  * </p>
  *
- * @author Ren Gui Jie 812022339@qq.com
+ * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @RestController

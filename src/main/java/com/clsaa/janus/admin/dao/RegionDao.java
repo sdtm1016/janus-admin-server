@@ -1,6 +1,10 @@
 package com.clsaa.janus.admin.dao;
 
 
+import com.clsaa.janus.admin.entity.po.Region;
+
+import java.util.List;
+
 /**
  * <p>
  * Mapper 接口
@@ -11,4 +15,10 @@ package com.clsaa.janus.admin.dao;
  */
 public interface RegionDao {
 
+    /**
+     * 获取全部未删除的地域
+     *
+     * @return {@link List<Region>}
+     */
+    List<Region> getAllRegion();
 }

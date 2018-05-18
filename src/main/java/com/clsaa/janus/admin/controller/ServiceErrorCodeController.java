@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 服务端可能抛出的错误码 前端控制器
  * </p>
  *
- * @author Ren Gui Jie 812022339@qq.com
+ * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @RestController

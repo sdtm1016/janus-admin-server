@@ -14,5 +14,11 @@
         <result column="muser" property="muser"/>
         <result column="status" property="status"/>
     </resultMap>
+    <select id="getAllRegion" resultMap="BaseResultMap">
+        select *
+        from `t_region`
+        where `status` != 0
+        order by `ctime`
+    </select>
 
 </mapper>
