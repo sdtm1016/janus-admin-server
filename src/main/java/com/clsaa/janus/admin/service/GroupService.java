@@ -34,7 +34,7 @@ public class GroupService {
     @Autowired
     private RegionService regionService;
 
-    public static GroupV1 valueOf(Group group) {
+    private static GroupV1 valueOf(Group group) {
         if (group == null) {
             return null;
         } else {
@@ -66,6 +66,7 @@ public class GroupService {
         try {
             count = this.groupDao.add(group);
         } catch (Exception e) {
+            e.printStackTrace();
             BizAssert.pass(count == 1, BizCodes.ERROR_INSERT);
         }
         BizAssert.pass(count == 1, BizCodes.ERROR_INSERT);

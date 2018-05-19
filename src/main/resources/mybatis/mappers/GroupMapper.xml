@@ -19,7 +19,7 @@
     <insert id="add">
         INSERT INTO `t_group` (`id`, `region_id`, `name`, `description`, `sub_domain`, `traffic_limit`,
                                `ctime`, `cuser`, `mtime`, `muser`)
-        VALUES (#{id}, #{region_id}, #{name}, #{description}, #{sub_domain}, #{traffic_limit},
+        VALUES (#{id}, #{regionId}, #{name}, #{description}, #{subDomain}, #{trafficLimit},
                 current_timestamp, #{cuser}, current_timestamp, #{muser});
     </insert>
 
@@ -56,7 +56,7 @@
         select count(*)
         from `t_group`
         where `region_id` = #{regionId}
-        <if test="keyword!=null">
+        <if test="keyword!=null and keyword!=''">
             `name` like concat(#{keyword},'%')
         </if>
     </select>
@@ -65,7 +65,7 @@
         select *
         from `t_group`
         where `region_id` = #{regionId}
-        <if test="keyword!=null">
+        <if test="keyword!=null and keyword!=''">
             `name` like concat(#{keyword},'%')
         </if>
         order by `ctime` desc
