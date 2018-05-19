@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * API分组信息持久层对象
+ * API分组信息视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class Group implements Serializable {
+public class GroupV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,31 +47,7 @@ public class Group implements Serializable {
      */
     private Timestamp ctime;
     /**
-     * 创建人
-     */
-    private String cuser;
-    /**
      * 修改时间
      */
     private Timestamp mtime;
-    /**
-     * 修改人
-     */
-    private String muser;
-
-    public Group() {
-    }
-
-    public Group(String id, String regionId, String name, String description, String subDomain, Integer trafficLimit, Timestamp ctime, String cuser, Timestamp mtime, String muser) {
-        this.id = id;
-        this.regionId = regionId;
-        this.name = name;
-        this.description = description;
-        this.subDomain = subDomain;
-        this.trafficLimit = trafficLimit;
-        this.ctime = ctime;
-        this.cuser = cuser;
-        this.mtime = mtime;
-        this.muser = muser;
-    }
 }

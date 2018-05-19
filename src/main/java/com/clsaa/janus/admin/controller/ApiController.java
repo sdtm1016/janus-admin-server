@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * API信息 前端控制器
+ * API信息 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

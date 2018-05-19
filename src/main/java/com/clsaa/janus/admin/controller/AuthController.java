@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * API认证信息,包含AccessKey和AccessSecret 前端控制器
+ * API认证信息,包含AccessKey和AccessSecret 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

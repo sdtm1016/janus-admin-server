@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * IP控制策略项,包含具体要控制的IP信息 前端控制器
+ * IP控制策略项,包含具体要控制的IP信息 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

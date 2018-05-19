@@ -1,4 +1,3 @@
-
 package com.clsaa.janus.admin.result.resolver;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;

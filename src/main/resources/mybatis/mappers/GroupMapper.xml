@@ -14,7 +14,61 @@
         <result column="cuser" property="cuser"/>
         <result column="mtime" property="mtime"/>
         <result column="muser" property="muser"/>
-        <result column="status" property="status"/>
     </resultMap>
 
+    <insert id="add">
+        INSERT INTO `t_group` (`id`, `region_id`, `name`, `description`, `sub_domain`, `traffic_limit`,
+                               `ctime`, `cuser`, `mtime`, `muser`)
+        VALUES (#{id}, #{region_id}, #{name}, #{description}, #{sub_domain}, #{traffic_limit},
+                current_timestamp, #{cuser}, current_timestamp, #{muser});
+    </insert>
+
+    <delete id="delById">
+        delete
+        from `t_group`
+        where `id` = #{id}
+    </delete>
+
+    <update id="update">
+        update `t_group`
+        set `name`          = #{name},
+            `description`   = #{description},
+            `sub_domain`    = #{subDomain},
+            `traffic_limit` = #{trafficLimit},
+            `mtime`         = current_timestamp,
+            `muser`         = #{muser}
+        where `id` = #{id}
+    </update>
+
+    <select id="getById" resultMap="BaseResultMap">
+        select *
+        from `t_group`
+        where `id` = #{id}
+    </select>
+
+    <select id="getByName" resultMap="BaseResultMap">
+        select *
+        from `t_group`
+        where `name` = #{name}
+    </select>
+
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        select count(*)
+        from `t_group`
+        where `region_id` = #{regionId}
+        <if test="keyword!=null">
+            `name` like concat(#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        select *
+        from `t_group`
+        where `region_id` = #{regionId}
+        <if test="keyword!=null">
+            `name` like concat(#{keyword},'%')
+        </if>
+        order by `ctime` desc
+        limit #{rowOffset},#{pageSize}
+    </select>
 </mapper>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 环境变量信息 前端控制器
+ * 环境变量信息 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

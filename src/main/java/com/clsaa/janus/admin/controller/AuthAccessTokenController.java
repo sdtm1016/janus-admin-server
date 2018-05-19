@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * Oauth2认证,AccessToken表 前端控制器
+ * Oauth2认证,AccessToken表 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

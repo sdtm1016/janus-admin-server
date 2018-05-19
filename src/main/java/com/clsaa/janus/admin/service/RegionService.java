@@ -45,4 +45,14 @@ public class RegionService {
         return this.regionDao.getAllRegion()
                 .stream().map(RegionService::valueOf).collect(Collectors.toList());
     }
+
+    /**
+     * 根据id获取region信息
+     *
+     * @param regionId 地域id
+     * @return {@link RegionV1}
+     */
+    public Region getRegionById(String regionId) {
+        return this.regionDao.getRegionByID(regionId);
+    }
 }

@@ -52,8 +52,5 @@ public class Region implements Serializable {
      * 修改人
      */
     private String muser;
-    /**
-     * 状态
-     */
-    private Integer status;
+
 }

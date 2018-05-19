@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 限流策略 前端控制器
+ * 限流策略 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

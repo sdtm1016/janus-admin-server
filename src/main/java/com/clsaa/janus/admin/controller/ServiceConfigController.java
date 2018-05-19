@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 网关到服务端的请求配置信息 前端控制器
+ * 网关到服务端的请求配置信息 接口实现类
  * </p>
  *
  * @author 任贵杰 812022339@qq.com

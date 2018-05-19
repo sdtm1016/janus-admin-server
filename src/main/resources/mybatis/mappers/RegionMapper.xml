@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clsaa.janus.admin.dao.RegionDao">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.Region">
         <id column="id" property="id"/>
@@ -12,7 +11,6 @@
         <result column="cuser" property="cuser"/>
         <result column="mtime" property="mtime"/>
         <result column="muser" property="muser"/>
-        <result column="status" property="status"/>
     </resultMap>
     <select id="getAllRegion" resultMap="BaseResultMap">
         select *
@@ -20,5 +18,9 @@
         where `status` != 0
         order by `ctime`
     </select>
-
+    <select id="getRegionByID" resultMap="BaseResultMap">
+        select *
+        from `t_region`
+        where `id` != #{id}
+    </select>
 </mapper>
