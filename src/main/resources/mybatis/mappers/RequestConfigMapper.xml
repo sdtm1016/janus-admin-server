@@ -13,10 +13,37 @@
         <result column="ws_type" property="wsType"/>
         <result column="body_format" property="bodyFormat"/>
         <result column="body_description" property="bodyDescription"/>
-        <result column="ctime" property="ctime"/>
-        <result column="cuser" property="cuser"/>
-        <result column="mtime" property="mtime"/>
-        <result column="muser" property="muser"/>
     </resultMap>
+
+    <insert id="add">
+        INSERT INTO `t_request_config` (`id`, `api_id`, `http_method`, `mode`,
+                                        `path`, `protocol`, `ws_type`, `body_format`, `body_description`)
+        VALUES (#{id}, #{apiId}, #{httpMethod}, #{mode},
+                #{path}, #{protocol}, #{wsType}, #{bodyFormat}, #{bodyDescription});
+    </insert>
+
+    <delete id="delByApiId">
+        delete
+        from `t_request_config`
+        where `api_id` = #{apiId}
+    </delete>
+
+    <update id="update">
+        update `t_request_config`
+        set `http_method`      = #{httpMethod},
+            `mode`             = #{mode},
+            `path`             = #{path},
+            `protocol`         = #{protocol},
+            `ws_type`          = #{wsType},
+            `body_format`      = #{bodyFormat},
+            `body_description` = #{bodyDescription}
+        where `id` = #{id}
+    </update>
+
+    <select id="getByApiId" resultMap="BaseResultMap">
+        select *
+        from `t_request_config`
+        where `api_id` = #{apiId}
+    </select>
 
 </mapper>
