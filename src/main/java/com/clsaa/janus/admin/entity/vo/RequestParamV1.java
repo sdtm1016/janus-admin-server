@@ -1,5 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
-
+package com.clsaa.janus.admin.entity.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +6,14 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * 客户端到网关的请求参数持久层对象
+ * 客户端到网关的请求参数视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class RequestParam implements Serializable {
+public class RequestParamV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,10 +21,6 @@ public class RequestParam implements Serializable {
      * 主键id
      */
     private String id;
-    /**
-     * APIid,t_api.id
-     */
-    private String apiId;
     /**
      * 参数名
      */
@@ -43,9 +38,9 @@ public class RequestParam implements Serializable {
      */
     private Integer type;
     /**
-     * 是否必填,false为非必填,true为必填
+     * 是否必填,0为非必填,1为必填
      */
-    private Boolean required;
+    private Integer required;
     /**
      * 参数顺序
      */

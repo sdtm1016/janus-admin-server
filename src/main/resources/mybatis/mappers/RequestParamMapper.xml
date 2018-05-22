@@ -12,10 +12,26 @@
         <result column="type" property="type"/>
         <result column="required" property="required"/>
         <result column="sort" property="sort"/>
-        <result column="ctime" property="ctime"/>
-        <result column="cuser" property="cuser"/>
-        <result column="mtime" property="mtime"/>
-        <result column="muser" property="muser"/>
     </resultMap>
+    <insert id="addBatch" parameterType="List">
+        INSERT INTO `t_request_param` (`id`, `api_id`, `name`, `location`,
+        `description`, `type`, `required`, `sort`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.apiId}, #{item.name}, #{item.location},
+            #{item.description}, #{item.type}, #{item.required}, #{item.sort})
+        </foreach>
+    </insert>
+    <delete id="delByApiId">
+        delete
+        from `t_request_param`
+        where `api_id` = #{apiId}
+    </delete>
+    <select id="getListByApiId" resultMap="BaseResultMap">
+        select *
+        from `t_request_param`
+        where `api_id` = #{apiId}
+        order by `sort` asc
+    </select>
 
 </mapper>

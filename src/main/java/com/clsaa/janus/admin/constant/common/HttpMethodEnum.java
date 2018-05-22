@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.constant.request;
+package com.clsaa.janus.admin.constant.common;
 
 /**
  * HttpMethod,1为GET,2为POST,3为PUT,4为DELETE,5为PATCH,6为HEAD

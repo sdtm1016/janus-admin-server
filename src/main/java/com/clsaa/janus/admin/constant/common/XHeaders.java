@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.constant.request;
+package com.clsaa.janus.admin.constant.common;
 
 /**
  * 扩展头

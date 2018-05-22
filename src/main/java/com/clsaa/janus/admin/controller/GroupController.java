@@ -1,6 +1,6 @@
 package com.clsaa.janus.admin.controller;
 
-import com.clsaa.janus.admin.constant.request.XHeaders;
+import com.clsaa.janus.admin.constant.common.XHeaders;
 import com.clsaa.janus.admin.entity.dto.GroupDtoV1;
 import com.clsaa.janus.admin.entity.vo.GroupV1;
 import com.clsaa.janus.admin.result.Pagination;

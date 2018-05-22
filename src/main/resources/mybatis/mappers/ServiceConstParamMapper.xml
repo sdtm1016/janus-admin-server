@@ -10,6 +10,26 @@
         <result column="value" property="value"/>
         <result column="location" property="location"/>
         <result column="description" property="description"/>
+        <result column="sort" property="sort"/>
     </resultMap>
+    <insert id="addBatch">
+        INSERT INTO `t_service_const_param` (`id`, `api_id`, `name`, `value`, `location`, `description`, `sort`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.apiId}, #{item.name}, #{item.value},
+            #{item.location}, #{item.description}, #{item.sort})
+        </foreach>
+    </insert>
+    <delete id="delByApiId">
+        delete
+        from `t_service_const_param`
+        where `api_id` = #{apiId}
+    </delete>
+    <select id="getListByApiId" resultMap="BaseResultMap">
+        select *
+        from `t_service_const_param`
+        where `api_id` = #{apiId}
+        order by `sort` asc
+    </select>
 
 </mapper>

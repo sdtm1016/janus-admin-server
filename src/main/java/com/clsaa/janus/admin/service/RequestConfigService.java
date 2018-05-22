@@ -1,6 +1,8 @@
 package com.clsaa.janus.admin.service;
 
 import com.clsaa.janus.admin.config.BizCodes;
+import com.clsaa.janus.admin.constant.common.HttpMethodEnum;
+import com.clsaa.janus.admin.constant.common.ProtocolEnum;
 import com.clsaa.janus.admin.constant.request.*;
 import com.clsaa.janus.admin.dao.RequestConfigDao;
 import com.clsaa.janus.admin.entity.po.RequestConfig;

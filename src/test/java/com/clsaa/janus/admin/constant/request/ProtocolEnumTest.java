@@ -1,5 +1,6 @@
 package com.clsaa.janus.admin.constant.request;
 
+import com.clsaa.janus.admin.constant.common.ProtocolEnum;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

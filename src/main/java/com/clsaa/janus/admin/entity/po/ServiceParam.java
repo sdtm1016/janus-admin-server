@@ -40,4 +40,8 @@ public class ServiceParam implements Serializable {
      * 参数位置,1为path,2为query,3为head,4为body
      */
     private Integer location;
+    /**
+     * 参数顺序
+     */
+    private Integer sort;
 }

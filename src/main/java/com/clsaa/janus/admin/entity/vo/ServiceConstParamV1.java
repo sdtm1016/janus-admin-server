@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo;
 
 
 import lombok.Getter;
@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 
 /**
- * 网关请求到服务端的常量参数持久层对象
+ * 网关请求到服务端的常量参数视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class ServiceConstParam implements Serializable {
+public class ServiceConstParamV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,11 +23,6 @@ public class ServiceConstParam implements Serializable {
      * 主键
      */
     private String id;
-    /**
-     * APIid,t_api.id
-     */
-
-    private String apiId;
     /**
      * 参数名
      */

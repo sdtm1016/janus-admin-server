@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo;
 
 
 import lombok.Getter;
@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 
 /**
- * 网关到服务端的请求配置信息持久层对象
+ * 网关到服务端的请求配置信息视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class ServiceConfig implements Serializable {
+public class ServiceConfigV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,10 +23,6 @@ public class ServiceConfig implements Serializable {
      * 主键id
      */
     private String id;
-    /**
-     * APIid,t_api.id
-     */
-    private String apiId;
     /**
      * 后端服务类型,1为HTTP/HTTPS,2为函数计算
      */
@@ -63,21 +59,4 @@ public class ServiceConfig implements Serializable {
      * mock数据
      */
     private String mockResult;
-
-    public ServiceConfig() {
-    }
-
-    public ServiceConfig(String id, String apiId, Integer type, Integer contentTypeCategory, String contentTypeValue, String address, Integer httpMethod, String path, Long timeout, Boolean mock, String mockResult) {
-        this.id = id;
-        this.apiId = apiId;
-        this.type = type;
-        this.contentTypeCategory = contentTypeCategory;
-        this.contentTypeValue = contentTypeValue;
-        this.address = address;
-        this.httpMethod = httpMethod;
-        this.path = path;
-        this.timeout = timeout;
-        this.mock = mock;
-        this.mockResult = mockResult;
-    }
 }

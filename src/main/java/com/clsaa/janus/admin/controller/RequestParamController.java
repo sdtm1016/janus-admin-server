@@ -1,9 +1,12 @@
 package com.clsaa.janus.admin.controller;
 
+import com.clsaa.janus.admin.entity.po.RequestParam;
 import com.clsaa.janus.admin.service.RequestParamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,4 +21,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class RequestParamController {
     @Autowired
     private RequestParamService requestParamService;
+
 }

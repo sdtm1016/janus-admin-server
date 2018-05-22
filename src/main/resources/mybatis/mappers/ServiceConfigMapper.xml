@@ -7,12 +7,30 @@
         <id column="id" property="id"/>
         <result column="api_id" property="apiId"/>
         <result column="address" property="address"/>
+        <result column="type" property="type"/>
+        <result column="content_type_category" property="contentTypeCategory"/>
+        <result column="content_type_value" property="contentTypeValue"/>
         <result column="http_method" property="httpMethod"/>
         <result column="path" property="path"/>
-        <result column="protocol" property="protocol"/>
         <result column="timeout" property="timeout"/>
         <result column="mock" property="mock"/>
         <result column="mock_result" property="mockResult"/>
     </resultMap>
+    <insert id="add">
+        INSERT INTO `t_service_config` (`id`, `api_id`, `type`, `content_type_category`, `content_type_value`,
+                                        `address`, `http_method`, `path`, `timeout`, `mock`, `mock_result`)
+        VALUES (#{id}, #{apiId}, #{type}, #{contentTypeCategory}, #{contentTypeValue},
+            #{address}, #{httpMethod}, #{path}, #{timeout}, #{mock}, #{mockResult});
+    </insert>
+    <delete id="delByApiId">
+        delete
+        from `t_request_config`
+        where `api_id` = #{apiId}
+    </delete>
+    <select id="getByApiId" resultMap="BaseResultMap">
+        select *
+        from `t_service_config`
+        where `api_id` = #{apiId}
+    </select>
 
 </mapper>
