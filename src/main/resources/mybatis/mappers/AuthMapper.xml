@@ -16,5 +16,49 @@
         <result column="muser" property="muser"/>
         <result column="status" property="status"/>
     </resultMap>
-
+    <insert id="add">
+        INSERT INTO `t_auth` (`id`, `region_id`, `access_key`, `access_secret`,
+                              `name`, `description`, `ctime`, `cuser`, `mtime`, `muser`, `status`)
+        VALUES (#{id}, #{regionId}, #{accessKey}, #{accessSecret},
+            #{name}, #{description}, current_timestamp, #{cuser}, current_timestamp, #{muser}, #{status})
+    </insert>
+    <delete id="delById">
+        DELETE
+        FROM `t_auth`
+        WHERE `id` = #{id}
+    </delete>
+    <update id="update">
+        UPDATE `t_auth`
+        SET
+            `access_key`    = #{accesskey},
+            `access_secret` = #{accessSecret},
+            `name`          = #{name},
+            `description`   = #{description},
+            `mtime`         = current_timestamp,
+            `muser`         = #{muser},
+            `status`        = #{status}
+        WHERE `id` = #{id}
+    </update>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_auth`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_auth`
+        WHERE `region_id` = #{regionId}
+        <if test="keyword!=null">
+            AND `name` LICK concat('%',#{keyword},'%')
+        </if>
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT COUNT(*)
+        FROM `t_auth`
+        WHERE `region_id` = #{regionId}
+        <if test="keyword!=null">
+            AND `name` LICK concat('%',#{keyword},'%')
+        </if>
+        LIMIT #{rowOffset},#{pageSize}
+    </select>
 </mapper>

@@ -18,6 +18,9 @@ public class Auth implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public static final int STATUS_OK = 1;
+    public static final int STATUS_BANNED = 2;
+
     /**
      * 主键
      */
@@ -59,7 +62,24 @@ public class Auth implements Serializable {
      */
     private String muser;
     /**
-     * 状态,0为删除,1为可用,2为禁用
+     * 状态,1为可用,2为禁用
      */
     private Integer status;
+
+    public Auth() {
+    }
+
+    public Auth(String id, String regionId, String accessKey, String accessSecret, String name, String description, Timestamp ctime, String cuser, Timestamp mtime, String muser, Integer status) {
+        this.id = id;
+        this.regionId = regionId;
+        this.accessKey = accessKey;
+        this.accessSecret = accessSecret;
+        this.name = name;
+        this.description = description;
+        this.ctime = ctime;
+        this.cuser = cuser;
+        this.mtime = mtime;
+        this.muser = muser;
+        this.status = status;
+    }
 }
