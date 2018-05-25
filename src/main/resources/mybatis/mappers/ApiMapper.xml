@@ -22,4 +22,66 @@
         <result column="status" property="status"/>
     </resultMap>
 
+    <insert id="add">
+        INSERT INTO `t_api` (`id`, `region_id`, `group_id`, `name`, `description`, `auth_type`,
+                             `sign_method`, `visibility`, `result_type`, `success_result_sample`,
+                             `fail_result_sample`, `ctime`, `cuser`, `mtime`, `muser`, `status`)
+        VALUES (#{id}, #{regionId}, #{groupId}, #{name}, #{description}, #{authType},
+                       #{signMethod}, #{visibility}, #{resultType}, #{successResultSample},
+                       #{failResultSample}, current_timestamp, #{cuser}, current_timestamp, #{muser}, #{status});
+    </insert>
+
+    <delete id="delById">
+        DELETE
+        FROM `t_api`
+        WHERE `id` = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE `t_api`
+        SET
+            `region_id`             = #{regionId},
+            `group_id`              = #{groupId},
+            `name`                  = #{name},
+            `description`           = #{description},
+            `auth_type`             = #{authType},
+            `sign_method`           = #{signMethod},
+            `visibility`            = #{visibility},
+            `result_type`           = #{resultType},
+            `success_result_sample` = #{successResultSample},
+            `fail_result_sample`    = #{failResultSample},
+            `mtime`                 = current_timestamp,
+            `muser`                 = #{muser},
+            `status`                = #{status}
+        WHERE `id` = #{id}
+    </update>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_api`
+        WHERE `region_id` = #{regionId}
+        <if test="groupId!=null">
+            AND `group_id` = #{groupId}
+        </if>
+        <if test="keyword!=null">
+            AND `name` LIKE concat('%',#{keyword},'%')
+        </if>
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api`
+        WHERE `region_id` = #{regionId}
+        <if test="groupId!=null">
+            AND `group_id` = #{groupId}
+        </if>
+        <if test="keyword!=null">
+            AND `name` LIKE concat('%',#{keyword},'%')
+        </if>
+        LIMIT #{rowOffset},#{pageSize}
+    </select>
+
 </mapper>

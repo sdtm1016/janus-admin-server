@@ -66,9 +66,9 @@ public class ServiceParamService {
         try {
             count = this.serviceParamDao.addBatch(serviceParamList);
         } catch (Exception e) {
-            BizAssert.pass(count == serviceParamList.size(), BizCodes.ERROR_DELETE);
+            BizAssert.pass(count == serviceParamList.size(), BizCodes.ERROR_INSERT);
         }
-        BizAssert.pass(count == serviceParamList.size(), BizCodes.ERROR_DELETE);
+        BizAssert.pass(count == serviceParamList.size(), BizCodes.ERROR_INSERT);
         return true;
     }
 

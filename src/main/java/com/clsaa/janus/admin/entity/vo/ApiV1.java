@@ -1,26 +1,25 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 /**
- * API信息持久层对象
+ * API信息视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class Api implements Serializable {
+public class ApiV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static final int STATUS_DEL = 0;
-    public static final int STATUS_OK = 1;
     /**
      * 主键id
      */
@@ -70,19 +69,31 @@ public class Api implements Serializable {
      */
     private Timestamp ctime;
     /**
-     * 创建人
-     */
-    private String cuser;
-    /**
      * 修改时间
      */
     private Timestamp mtime;
     /**
-     * 修改人
+     * 前端请求配置
      */
-    private String muser;
+    private RequestConfigV1 requestConfig;
     /**
-     * 状态,0为已删除,1为可用
+     * 前端请求参数列表
      */
-    private Integer status;
+    private List<RequestParamV1> requestParams;
+    /**
+     * 后端服务配置
+     */
+    private ServiceConfigV1 serviceConfig;
+    /**
+     * 后端服务常量参数
+     */
+    private List<ServiceConstParamV1> serviceConstParams;
+    /**
+     * 后端服务错误码
+     */
+    private List<ServiceErrorCodeV1> serviceErrorCodes;
+    /**
+     * 后端请求参数列表
+     */
+    private List<ServiceParamV1> serviceParams;
 }
