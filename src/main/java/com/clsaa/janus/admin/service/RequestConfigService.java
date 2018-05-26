@@ -6,7 +6,7 @@ import com.clsaa.janus.admin.constant.common.ProtocolEnum;
 import com.clsaa.janus.admin.constant.request.*;
 import com.clsaa.janus.admin.dao.RequestConfigDao;
 import com.clsaa.janus.admin.entity.po.RequestConfig;
-import com.clsaa.janus.admin.entity.vo.RequestConfigV1;
+import com.clsaa.janus.admin.entity.vo.v1.RequestConfigV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
 import com.clsaa.janus.admin.util.UUIDUtil;

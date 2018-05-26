@@ -2,7 +2,7 @@ package com.clsaa.janus.admin.service;
 
 import com.clsaa.janus.admin.dao.RegionDao;
 import com.clsaa.janus.admin.entity.po.Region;
-import com.clsaa.janus.admin.entity.vo.RegionV1;
+import com.clsaa.janus.admin.entity.vo.v1.RegionV1;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

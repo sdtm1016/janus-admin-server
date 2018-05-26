@@ -3,7 +3,7 @@ package com.clsaa.janus.admin.service;
 import com.clsaa.janus.admin.config.BizCodes;
 import com.clsaa.janus.admin.dao.ServiceErrorCodeDao;
 import com.clsaa.janus.admin.entity.po.ServiceErrorCode;
-import com.clsaa.janus.admin.entity.vo.ServiceErrorCodeV1;
+import com.clsaa.janus.admin.entity.vo.v1.ServiceErrorCodeV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

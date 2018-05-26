@@ -6,7 +6,7 @@ import com.clsaa.janus.admin.constant.service.ContentTypeCategoryEnum;
 import com.clsaa.janus.admin.constant.service.ServiceTypeEnum;
 import com.clsaa.janus.admin.dao.ServiceConfigDao;
 import com.clsaa.janus.admin.entity.po.ServiceConfig;
-import com.clsaa.janus.admin.entity.vo.ServiceConfigV1;
+import com.clsaa.janus.admin.entity.vo.v1.ServiceConfigV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
 import com.clsaa.janus.admin.util.UUIDUtil;

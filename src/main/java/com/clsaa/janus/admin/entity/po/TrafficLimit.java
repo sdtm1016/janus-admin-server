@@ -47,8 +47,4 @@ public class TrafficLimit implements Serializable {
      * 客户端流量限制,单位次
      */
     private Integer appLimit;
-    /**
-     * 状态,0为已删除,1为可用
-     */
-    private Integer status;
 }

@@ -30,6 +30,13 @@ spring.jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: true  #返回JSON统一�
 spring.jackson.serialization.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
 
 janus:
-  auth:
-    accessKey:
-      AESKey: 123456class654321 #用于加密AccessKey的密匙
+  app:
+    auth:
+      aesKey: #应用相关的AesKey
+        AccessKey: 123456class654321 #用于加密AccessKey的密匙
+        AccessSecret: 123456class654321   #用于加密AccessSecret的密匙
+  service:
+    auth:
+      aesKey: #后端服务相关的AesKey
+        AccessKey: 123456class654321 #用于加密AccessKey的密匙
+        AccessSecret: 123456class654321   #用于加密AccessSecret的密匙

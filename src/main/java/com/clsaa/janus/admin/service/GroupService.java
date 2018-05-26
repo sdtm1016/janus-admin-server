@@ -4,7 +4,7 @@ import com.clsaa.janus.admin.config.BizCodes;
 import com.clsaa.janus.admin.dao.GroupDao;
 import com.clsaa.janus.admin.entity.po.Group;
 import com.clsaa.janus.admin.entity.po.Region;
-import com.clsaa.janus.admin.entity.vo.GroupV1;
+import com.clsaa.janus.admin.entity.vo.v1.GroupV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.util.TimestampUtil;

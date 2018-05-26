@@ -6,10 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 /**
  * @author 任贵杰
  * @version v1
@@ -22,32 +18,43 @@ import javax.validation.constraints.NotNull;
 @ConfigurationProperties(prefix = "janus")
 @Validated
 public class JanusProperties {
-    @NotNull
-    @Valid
-    private Auth auth;
+    private App app;
+    private Service service;
 
-    /**
-     * 认证信息相关配置
-     */
     @Getter
     @Setter
-    public static class Auth {
-        @NotNull
-        @Valid
-        private AccessKey accessKey;
+    public static class App {
+        private Auth auth;
 
-        /**
-         * AccessKey相关信息
-         */
         @Getter
         @Setter
-        public static class AccessKey {
-            /**
-             * AccessSecret数据库存储加密密匙
-             */
-            @NotEmpty
-            @Valid
-            private String aesKey;
+        public static class Auth {
+            private AesKey aesKey;
+
+            @Getter
+            @Setter
+            public static class AesKey {
+                private String accessKey;
+                private String accessSecret;
+            }
+        }
+    }
+
+    @Getter
+    @Setter
+    public static class Service {
+        private Auth auth;
+        @Getter
+        @Setter
+        public static class Auth {
+            private AesKey aesKey;
+
+            @Getter
+            @Setter
+            public static class AesKey {
+                private String accessKey;
+                private String accessSecret;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.clsaa.janus.admin.service;
 
 import com.clsaa.janus.admin.BaseTest;
-import com.clsaa.janus.admin.entity.vo.RequestConfigV1;
+import com.clsaa.janus.admin.entity.vo.v1.RequestConfigV1;
 import com.clsaa.janus.admin.util.UUIDUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

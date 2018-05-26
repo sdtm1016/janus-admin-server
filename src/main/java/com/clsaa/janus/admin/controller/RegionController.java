@@ -1,6 +1,6 @@
 package com.clsaa.janus.admin.controller;
 
-import com.clsaa.janus.admin.entity.vo.RegionV1;
+import com.clsaa.janus.admin.entity.vo.v1.RegionV1;
 import com.clsaa.janus.admin.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

@@ -2,7 +2,7 @@ package com.clsaa.janus.admin.dao;
 
 
 import com.clsaa.janus.admin.entity.po.Api;
-import com.clsaa.janus.admin.entity.vo.ApiV1;
+import com.clsaa.janus.admin.entity.vo.v1.ApiV1;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

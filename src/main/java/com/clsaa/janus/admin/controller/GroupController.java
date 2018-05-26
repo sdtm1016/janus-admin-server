@@ -1,8 +1,8 @@
 package com.clsaa.janus.admin.controller;
 
 import com.clsaa.janus.admin.constant.common.XHeaders;
-import com.clsaa.janus.admin.entity.dto.GroupDtoV1;
-import com.clsaa.janus.admin.entity.vo.GroupV1;
+import com.clsaa.janus.admin.entity.dto.v1.GroupDtoV1;
+import com.clsaa.janus.admin.entity.vo.v1.GroupV1;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;

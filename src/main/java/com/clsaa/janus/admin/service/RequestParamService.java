@@ -5,7 +5,7 @@ import com.clsaa.janus.admin.constant.common.ParamLocationEnum;
 import com.clsaa.janus.admin.constant.common.ParamTypeEnum;
 import com.clsaa.janus.admin.dao.RequestParamDao;
 import com.clsaa.janus.admin.entity.po.RequestParam;
-import com.clsaa.janus.admin.entity.vo.RequestParamV1;
+import com.clsaa.janus.admin.entity.vo.v1.RequestParamV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

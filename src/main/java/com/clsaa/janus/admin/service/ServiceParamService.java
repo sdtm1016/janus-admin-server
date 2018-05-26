@@ -4,7 +4,7 @@ import com.clsaa.janus.admin.config.BizCodes;
 import com.clsaa.janus.admin.constant.common.ParamLocationEnum;
 import com.clsaa.janus.admin.dao.ServiceParamDao;
 import com.clsaa.janus.admin.entity.po.ServiceParam;
-import com.clsaa.janus.admin.entity.vo.ServiceParamV1;
+import com.clsaa.janus.admin.entity.vo.v1.ServiceParamV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
