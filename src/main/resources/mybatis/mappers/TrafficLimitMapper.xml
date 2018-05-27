@@ -11,7 +11,55 @@
         <result column="description" property="description"/>
         <result column="api_limit" property="apiLimit"/>
         <result column="app_limit" property="appLimit"/>
-        <result column="status" property="status"/>
+        <result column="ctime" property="ctime"/>
+        <result column="cuser" property="cuser"/>
+        <result column="mtime" property="mtime"/>
+        <result column="muser" property="muser"/>
     </resultMap>
+    <insert id="add">
+        INSERT INTO `t_traffic_limit` (`id`, `region_id`, `name`, `unit`, `description`, `api_limit`, `app_limit`,
+                                       `ctime`, `cuser`, `mtime`, `muser`)
+        VALUES (#{id}, #{regionId}, #{name}, #{unit}, #{description}, #{apiLimit}, #{appLimit},
+            current_timestamp, #{cuser}, current_timestamp, #{muser});
+
+    </insert>
+    <delete id="delById">
+        DELETE
+        FROM `t_traffic_limit`
+        WHERE `id` = #{id}
+    </delete>
+    <update id="update">
+        UPDATE `t_traffic_limit`
+        SET
+            `name`        = #{name},
+            `unit`        = #{unit},
+            `description` = #{description},
+            `api_limit`   = #{apiLimit},
+            `app_limit`   = #{appLimit},
+            `mtime`       = current_timestamp,
+            `muser`       = #{muser}
+        WHERE `id` = #{id}
+    </update>
+    <select id="getTrafficLimitById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_traffic_limit`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT *
+        FROM `t_traffic_limit`
+        <if test="keyword!=null">
+            WHERE `name` LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_traffic_limit`
+        <if test="keyword!=null">
+            WHERE `name` LIKE CONCAT('%',#{keyword},'%')
+        </if>
+        ORDER BY `ctime` DESC
+        LIMIT #{rowOffset},#{pageSize}
+    </select>
 
 </mapper>

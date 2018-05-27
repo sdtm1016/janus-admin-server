@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo.v1;
 
 
 import lombok.Getter;
@@ -9,14 +9,14 @@ import java.sql.Timestamp;
 
 
 /**
- * 限流策略持久层对象
+ * 限流策略视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class TrafficLimit implements Serializable {
+public class TrafficLimitV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -53,32 +53,7 @@ public class TrafficLimit implements Serializable {
      */
     private Timestamp ctime;
     /**
-     * 创建人
-     */
-    private String cuser;
-    /**
      * 修改时间
      */
     private Timestamp mtime;
-    /**
-     * 修改人
-     */
-    private String muser;
-
-    public TrafficLimit() {
-    }
-
-    public TrafficLimit(String id, String regionId, String name, Integer unit, String description, Integer apiLimit, Integer appLimit, Timestamp ctime, String cuser, Timestamp mtime, String muser) {
-        this.id = id;
-        this.regionId = regionId;
-        this.name = name;
-        this.unit = unit;
-        this.description = description;
-        this.apiLimit = apiLimit;
-        this.appLimit = appLimit;
-        this.ctime = ctime;
-        this.cuser = cuser;
-        this.mtime = mtime;
-        this.muser = muser;
-    }
 }
