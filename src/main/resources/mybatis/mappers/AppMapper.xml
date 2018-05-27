@@ -50,17 +50,18 @@
         FROM `t_app`
         WHERE 1 = 1
         <if test="keyword!=null">
-            AND `name` LICK concat('%',#{keyword},'%')
+            AND `name` LIKE concat('%',#{keyword},'%')
         </if>
     </select>
 
     <select id="getPaginationList" resultMap="BaseResultMap">
-        SELECT COUNT(*)
+        SELECT *
         FROM `t_app`
         WHERE 1 = 1
         <if test="keyword!=null">
-            AND `name` LICK concat('%',#{keyword},'%')
+            AND `name` LIKE concat('%',#{keyword},'%')
         </if>
+        ORDER BY `ctime` ASC
         LIMIT #{rowOffset},#{pageSize}
     </select>
 

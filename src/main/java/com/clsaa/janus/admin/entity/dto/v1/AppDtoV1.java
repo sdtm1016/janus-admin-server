@@ -25,5 +25,5 @@ public class AppDtoV1 implements Serializable {
     /**
      * 描述
      */
-    private String description;
+    private String description = "";
 }

@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  */
 @Component
 public class NormalNameValidator implements Validator {
-    public static final java.util.regex.Pattern NORMAL_NAME_PATTERN = Pattern.compile("^[^0-9]{4,50}");
+    public static final java.util.regex.Pattern NORMAL_NAME_PATTERN = Pattern.compile("^[\u4e00-\u9fa5A-Za-z]+[\u4e00-\u9fa5A-Za-z0-9_]{3,50}");
 
 
     @Override

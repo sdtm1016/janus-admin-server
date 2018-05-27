@@ -28,7 +28,7 @@ public class ServiceAuthController {
     @Autowired
     private ServiceAuthDtoV1Validator serviceAuthDtoV1Validator;
 
-    @InitBinder("validator.ServiceAuthDtoV1")
+    @InitBinder("serviceAuthDtoV1")
     protected void initServiceAuthDtoV1ValidatorBinder(WebDataBinder binder) {
         binder.setValidator(serviceAuthDtoV1Validator);
     }
@@ -53,8 +53,8 @@ public class ServiceAuthController {
     /**
      * 删除API后端服务认证信息
      *
-     * @param loginUserId 登录用户id
-     * @param serviceAuthId      后端服务认证信息id
+     * @param loginUserId   登录用户id
+     * @param serviceAuthId 后端服务认证信息id
      * @return 是否删除成功
      * @summary 删除后端服务认证信息
      * @author 任贵杰 812022339@qq.com

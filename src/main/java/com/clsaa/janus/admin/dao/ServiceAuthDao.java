@@ -2,6 +2,7 @@ package com.clsaa.janus.admin.dao;
 
 
 import com.clsaa.janus.admin.entity.po.ServiceAuth;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public interface ServiceAuthDao {
      * @param id 后端服务认证信息id
      * @return 影响记录数
      */
-    int delById(String id);
+    int delById(@Param("id") String id);
 
     /**
      * 更新后端服务认证信息
@@ -45,7 +46,7 @@ public interface ServiceAuthDao {
      * @param id 后端服务认证信息id
      * @return {@link ServiceAuth}
      */
-    ServiceAuth getById(String id);
+    ServiceAuth getById(@Param("id") String id);
 
     /**
      * 获取后端服务认证信息分页数据总量
@@ -54,15 +55,20 @@ public interface ServiceAuthDao {
      * @param keyword  关键词
      * @return 分页数据总量
      */
-    int getPaginationCount(String regionId, String keyword);
+    int getPaginationCount(@Param("regionId") String regionId,
+                           @Param("keyword") String keyword);
 
     /**
      * 获取后端服务认证信息分页数据
-     * @param regionId 地域id
+     *
+     * @param regionId  地域id
      * @param keyword   关键词
-     * @param rowOffset    页偏移
+     * @param rowOffset 页偏移
      * @param pageSize  页大小
-     * @return
+     * @return {@link List<ServiceAuth>}
      */
-    List<ServiceAuth> getPaginationList(String regionId, String keyword, Integer rowOffset, Integer pageSize);
+    List<ServiceAuth> getPaginationList(@Param("regionId") String regionId,
+                                        @Param("keyword") String keyword,
+                                        @Param("rowOffset") Integer rowOffset,
+                                        @Param("pageSize") Integer pageSize);
 }

@@ -5,8 +5,10 @@ import com.clsaa.janus.admin.entity.dto.v1.AppDtoV1;
 import com.clsaa.janus.admin.entity.vo.v1.AppV1;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.service.AppService;
+import com.clsaa.janus.admin.validator.dto.AppDtoV1Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -23,7 +25,13 @@ import reactor.core.publisher.Mono;
 public class AppController {
     @Autowired
     private AppService appService;
+    @Autowired
+    private AppDtoV1Validator appDtoV1Validator;
 
+    @InitBinder("appDtoV1")
+    protected void initAppDtoV1ValidatorBinder(WebDataBinder binder) {
+        binder.setValidator(appDtoV1Validator);
+    }
 
     /**
      * 创建应用信息
@@ -37,7 +45,7 @@ public class AppController {
      */
     @PostMapping(value = "/v1/app")
     public Mono<String> addAppV1(@RequestHeader(value = XHeaders.X_LOGIN_USER_ID) String loginUserId,
-                                  @Validated @RequestBody AppDtoV1 appDtoV1) {
+                                 @Validated @RequestBody AppDtoV1 appDtoV1) {
         return Mono.create(sink -> sink.success(appService.addApp(loginUserId, appDtoV1.getName(), appDtoV1.getDescription())));
     }
 
@@ -85,7 +93,7 @@ public class AppController {
      * @author 任贵杰 812022339@qq.com
      * @since 2018-05-24
      */
-    @PutMapping(value = "/v1/app/{appId}")
+    @PutMapping(value = "/v1/app/{appId}/AccessSecret")
     public Mono<Boolean> updateAppAccessSecretByIdV1(@RequestHeader(value = XHeaders.X_LOGIN_USER_ID) String loginUserId,
                                                      @PathVariable(value = "appId") String appId) {
         return Mono.create(sink -> sink.success(this.appService.updateAppAccessSecret(loginUserId, appId)));

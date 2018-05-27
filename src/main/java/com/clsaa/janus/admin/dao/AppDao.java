@@ -2,6 +2,7 @@ package com.clsaa.janus.admin.dao;
 
 
 import com.clsaa.janus.admin.entity.po.App;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public interface AppDao {
      * @param id 应用信息id
      * @return 影响记录数
      */
-    int delById(String id);
+    int delById(@Param("id") String id);
 
     /**
      * 更新应用信息
@@ -45,15 +46,15 @@ public interface AppDao {
      * @param id 应用信息id
      * @return {@link App}
      */
-    App getById(String id);
+    App getById(@Param("id") String id);
 
     /**
      * 获取应用信息分页数据总量
      *
-     * @param keyword  关键词
+     * @param keyword 关键词
      * @return 分页数据总量
      */
-    int getPaginationCount(String keyword);
+    int getPaginationCount(@Param("keyword") String keyword);
 
     /**
      * 获取应用信息分页数据
@@ -63,5 +64,7 @@ public interface AppDao {
      * @param pageSize  页大小
      * @return {@link List<App>}
      */
-    List<App> getPaginationList(String keyword, Integer rowOffset, Integer pageSize);
+    List<App> getPaginationList(@Param("keyword") String keyword,
+                                @Param("rowOffset") Integer rowOffset,
+                                @Param("pageSize") Integer pageSize);
 }

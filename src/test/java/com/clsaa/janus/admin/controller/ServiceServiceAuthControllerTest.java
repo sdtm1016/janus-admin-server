@@ -12,7 +12,7 @@ import org.junit.Test;
  */
 public class ServiceServiceAuthControllerTest extends BaseControllerTest {
 
-    private static final String BASE_URL_V1 = "/v1/auth/";
+    private static final String BASE_URL_V1 = "/v1/serviceAuth/";
     private static final String AUTH_ID = "1";
 
     @Test
