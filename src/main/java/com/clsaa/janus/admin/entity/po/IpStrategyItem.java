@@ -25,7 +25,7 @@ public class IpStrategyItem implements Serializable {
      */
     private String id;
     /**
-     * IP访问控制id,t_ip_access.id
+     * IP访问策略id,t_ip_access.id
      */
     private String ipStrategyId;
     /**

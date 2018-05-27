@@ -13,7 +13,49 @@
         <result column="cuser" property="cuser"/>
         <result column="mtime" property="mtime"/>
         <result column="muser" property="muser"/>
-        <result column="status" property="status"/>
     </resultMap>
+    <insert id="add">
+        INSERT INTO `t_ip_strategy` (`id`, `region_id`, `name`, `type`, `description`, `ctime`, `cuser`, `mtime`, `muser`)
+        VALUES (#{id}, #{regionId}, #{name}, #{type}, #{description}, current_timestamp, #{cuser}, current_timestamp,
+                #{muser});
+    </insert>
+    <update id="update">
+        UPDATE `t_ip_strategy`
+        SET
+            `name`        = #{name},
+            `type`        = #{type},
+            `description` = #{description},
+            `mtime`       = current_timestamp,
+            `muser`       = #{muser}
+        WHERE `id` = #{id}
+    </update>
+    <delete id="delById">
+        DELETE
+        FROM `t_ip_strategy`
+        WHERE `id` = #{id}
+    </delete>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_ip_strategy`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_ip_strategy`
+        WHERE `region_id` = #{regionId}
+        <if test="keyword!=null">
+            AND `name` LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_ip_strategy`
+        WHERE `region_id` = #{regionId}
+        <if test="keyword!=null">
+            AND `name` LIKE CONCAT('%',#{keyword},'%')
+        </if>
+        ORDER BY `ctime` DESC
+        LIMIT #{rowOffset},#{pageSize}
+    </select>
 
 </mapper>

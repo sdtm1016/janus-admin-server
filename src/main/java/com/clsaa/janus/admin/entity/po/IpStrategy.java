@@ -54,8 +54,19 @@ public class IpStrategy implements Serializable {
      * 修改人
      */
     private String muser;
-    /**
-     * 状态,0为已删除,1为可用
-     */
-    private Integer status;
+
+    public IpStrategy() {
+    }
+
+    public IpStrategy(String id, String regionId, String name, Integer type, String description, Timestamp ctime, String cuser, Timestamp mtime, String muser) {
+        this.id = id;
+        this.regionId = regionId;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.ctime = ctime;
+        this.cuser = cuser;
+        this.mtime = mtime;
+        this.muser = muser;
+    }
 }

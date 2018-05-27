@@ -22,11 +22,10 @@ public class NormalDescriptionValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        if (o != null) {
-            String description = (String) o;
-            BizAssert.validParam(description.length() < 180, BizCodes.INVALID_PARAM.getCode(),
-                    "描述不符合要求,请控制在0-180个字符");
-        }
+        BizAssert.validParam(o != null, BizCodes.INVALID_PARAM.getCode(), "描述为空");
+        String description = (String) o;
+        BizAssert.validParam(description.length() < 180, BizCodes.INVALID_PARAM.getCode(),
+                "描述不符合要求,请控制在1-180个字符");
     }
 
 }
