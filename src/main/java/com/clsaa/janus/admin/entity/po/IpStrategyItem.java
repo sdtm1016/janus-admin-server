@@ -29,9 +29,13 @@ public class IpStrategyItem implements Serializable {
      */
     private String ipStrategyId;
     /**
-     * 适用的IP或IP段
+     * 分组名称
      */
-    private String ipSegment;
+    private String name;
+    /**
+     * 适用的IP或IP段,多个用分号分隔
+     */
+    private String cidrIp;
     /**
      * 创建时间
      */
@@ -40,4 +44,26 @@ public class IpStrategyItem implements Serializable {
      * 创建人
      */
     private String cuser;
+    /**
+     * 修改时间
+     */
+    private Timestamp mtime;
+    /**
+     * 修改人
+     */
+    private String muser;
+
+    public IpStrategyItem() {
+    }
+
+    public IpStrategyItem(String id, String ipStrategyId, String name, String cidrIp, Timestamp ctime, String cuser, Timestamp mtime, String muser) {
+        this.id = id;
+        this.ipStrategyId = ipStrategyId;
+        this.name = name;
+        this.cidrIp = cidrIp;
+        this.ctime = ctime;
+        this.cuser = cuser;
+        this.mtime = mtime;
+        this.muser = muser;
+    }
 }

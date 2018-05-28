@@ -6,9 +6,46 @@
     <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.IpStrategyItem">
         <id column="id" property="id"/>
         <result column="ip_strategy_id" property="ipStrategyId"/>
-        <result column="ip_segment" property="ipSegment"/>
+        <result column="cidr_ip" property="cidrIp"/>
         <result column="ctime" property="ctime"/>
         <result column="cuser" property="cuser"/>
+        <result column="mtime" property="mtime"/>
+        <result column="muser" property="muser"/>
     </resultMap>
+    <insert id="add">
+        INSERT INTO `t_ip_strategy_item` (`id`, `ip_strategy_id`, `name`, `cidr_ip`, `ctime`, `cuser`, `mtime`, `muser`)
+        VALUES (#{id}, #{ipStrategyId}, #{name}, #{cidrIp}, current_timestamp, #{cuser}, current_timestamp, #{muser});
+    </insert>
+    <delete id="delById">
+        DELETE
+        FROM `t_ip_strategy_item`
+        WHERE `id` = #{id}
+    </delete>
+    <update id="update">
+        UPDATE `t_ip_strategy_item`
+        SET
+            `name`    = #{name},
+            `cidr_ip` = #{cidrIp},
+            `mtime`   = current_timestamp,
+            `muser`   = #{muser}
+        WHERE `id` = #{id}
+    </update>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_ip_strategy_item`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_ip_strategy_item`
+        WHERE `ip_strategy_id` = #{ipStrategyId}
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_ip_strategy_item`
+        WHERE `ip_strategy_id` = #{ipStrategyId}
+        ORDER BY `ctime` DESC
+        LIMIT #{rowOffset}, #{pageSize}
+    </select>
 
 </mapper>
