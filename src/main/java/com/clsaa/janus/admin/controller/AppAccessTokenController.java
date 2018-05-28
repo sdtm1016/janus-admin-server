@@ -1,6 +1,6 @@
 package com.clsaa.janus.admin.controller;
 
-import com.clsaa.janus.admin.service.AuthAccessTokenService;
+import com.clsaa.janus.admin.service.AppAccessTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +17,5 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class AppAccessTokenController {
     @Autowired
-    private AuthAccessTokenService authAccessTokenService;
+    private AppAccessTokenService appAccessTokenService;
 }

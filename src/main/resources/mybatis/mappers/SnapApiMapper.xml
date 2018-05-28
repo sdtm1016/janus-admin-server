@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsaa.janus.admin.dao.SnapApiDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.SnapApi">
+        <id column="id" property="id"/>
+        <result column="region_id" property="regionId"/>
+        <result column="group_id" property="groupId"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="auth_type" property="authType"/>
+        <result column="sign_method" property="signMethod"/>
+        <result column="visibility" property="visibility"/>
+        <result column="result_type" property="resultType"/>
+        <result column="success_result_sample" property="successResultSample"/>
+        <result column="fail_result_sample" property="failResultSample"/>
+        <result column="ctime" property="ctime"/>
+        <result column="cuser" property="cuser"/>
+        <result column="mtime" property="mtime"/>
+        <result column="muser" property="muser"/>
+    </resultMap>
+
+    <insert id="add">
+        INSERT INTO `t_snap_api` (`id`, `region_id`, `group_id`, `name`, `description`, `auth_type`,
+                             `sign_method`, `visibility`, `result_type`, `success_result_sample`,
+                             `fail_result_sample`, `ctime`, `cuser`, `mtime`, `muser`)
+        VALUES (#{id}, #{regionId}, #{groupId}, #{name}, #{description}, #{authType},
+                       #{signMethod}, #{visibility}, #{resultType}, #{successResultSample},
+                       #{failResultSample}, current_timestamp, #{cuser}, current_timestamp, #{muser});
+    </insert>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_snap_api`
+        WHERE `id` = #{id}
+    </select>
+</mapper>

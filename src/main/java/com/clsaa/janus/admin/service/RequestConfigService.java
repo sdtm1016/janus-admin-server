@@ -3,7 +3,9 @@ package com.clsaa.janus.admin.service;
 import com.clsaa.janus.admin.config.BizCodes;
 import com.clsaa.janus.admin.constant.common.HttpMethodEnum;
 import com.clsaa.janus.admin.constant.common.ProtocolEnum;
-import com.clsaa.janus.admin.constant.request.*;
+import com.clsaa.janus.admin.constant.request.BodyFormatEnum;
+import com.clsaa.janus.admin.constant.request.ParamModeEnum;
+import com.clsaa.janus.admin.constant.request.WSTypeEnum;
 import com.clsaa.janus.admin.dao.RequestConfigDao;
 import com.clsaa.janus.admin.entity.po.RequestConfig;
 import com.clsaa.janus.admin.entity.vo.v1.RequestConfigV1;
@@ -129,5 +131,15 @@ public class RequestConfigService {
     public RequestConfigV1 getRequestConfigV1ByApiId(String apiId) {
         RequestConfig requestConfig = this.requestConfigDao.getByApiId(apiId);
         return BeanUtils.convertType(requestConfig, RequestConfigV1.class);
+    }
+
+    /**
+     * 根据ApiId查询请求配置
+     *
+     * @param apiId APIId
+     * @return {@link RequestConfig}
+     */
+    public RequestConfig getRequestConfigByApiId(String apiId) {
+        return this.requestConfigDao.getByApiId(apiId);
     }
 }
