@@ -353,6 +353,27 @@ public class ApiService {
         return apiV1;
     }
 
+    /**
+     * 根据id查询API持久层对象
+     *
+     * @param apiId APIId
+     * @return {@link Api}
+     */
+    public Api getApiById(String apiId) {
+        return this.apiDao.getById(apiId);
+    }
+
+    /**
+     * 分页查询API信息
+     *
+     * @param loginUserId 登录用户id
+     * @param regionId    地域id
+     * @param groupId     分组id
+     * @param keyword     关键词
+     * @param pageNo      页号
+     * @param pageSize    页大小
+     * @return {@link Pagination<ApiV1>}
+     */
     public Pagination<ApiV1> getApiV1Pagination(String loginUserId, String regionId, String groupId, String keyword, Integer pageNo, Integer pageSize) {
         int count = this.apiDao.getPaginationCount(regionId, groupId, keyword);
         Pagination<ApiV1> pagination = new Pagination<>();

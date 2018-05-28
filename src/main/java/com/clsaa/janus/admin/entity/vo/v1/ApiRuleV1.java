@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo.v1;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * API规则持久层对象
+ * API规则视图层对象
  *
  * @author 任贵杰
  * @since 2018/5/17
  */
 @Getter
 @Setter
-public class ApiRule implements Serializable {
+public class ApiRuleV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,18 +42,4 @@ public class ApiRule implements Serializable {
      * 创建时间
      */
     private Timestamp ctime;
-    /**
-     * 创建人
-     */
-    private String cuser;
-
-    public ApiRule(String id, String apiId, String ruleId, String environmentId, Integer type, Timestamp ctime, String cuser) {
-        this.id = id;
-        this.apiId = apiId;
-        this.ruleId = ruleId;
-        this.environmentId = environmentId;
-        this.type = type;
-        this.ctime = ctime;
-        this.cuser = cuser;
-    }
 }

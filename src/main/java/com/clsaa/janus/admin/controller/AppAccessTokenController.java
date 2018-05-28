@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin
-public class AuthAccessTokenController {
+public class AppAccessTokenController {
     @Autowired
     private AuthAccessTokenService authAccessTokenService;
 }

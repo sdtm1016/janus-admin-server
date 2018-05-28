@@ -12,11 +12,37 @@
         <id column="ctime" property="ctime"/>
         <id column="cuser" property="cuser"/>
     </resultMap>
+    <insert id="add">
+        INSERT INTO t_api_rule (`id`, `api_id`, `rule_id`, `environment_id`, `type`, `ctime`, `cuser`)
+        VALUES (#{id}, #{apiId}, #{ruleId}, #{environmentId}, #{type}, current_timestamp, #{cuser});
+    </insert>
 
-    <select id="getById" resultMap="BaseResultMap">
+    <delete id="delByApiIdAndEnvIdAndType">
+        DELETE
+        FROM `t_api_rule`
+        WHERE `api_id` = #{apiId}
+              AND `environment_id` = #{environmentId}
+              AND `type` = #{type}
+    </delete>
+
+    <select id="getByApiIdAndEnvIdAndType" resultMap="BaseResultMap">
         SELECT *
         FROM `t_api_rule`
-        WHERE `id` = #{id}
+        WHERE `api_id` = #{apiId}
+              AND `environment_id` = #{environmentId}
+              AND `type` = #{type}
+    </select>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_api_rule`
+        WHERE `rule_id` = #{ruleId}
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api_rule`
+        WHERE `rule_id` = #{ruleId}
+        ORDER BY `ctime` DESC
+        LIMIT #{rowOffset}, #{pageSize}
     </select>
 
 </mapper>

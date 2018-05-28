@@ -46,8 +46,4 @@ public class Environment implements Serializable {
      * 修改人
      */
     private String muser;
-    /**
-     * 状态,0为已删除,1为可用
-     */
-    private Integer status;
 }
