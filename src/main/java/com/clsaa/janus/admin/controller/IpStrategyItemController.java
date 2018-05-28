@@ -6,8 +6,10 @@ import com.clsaa.janus.admin.entity.po.IpStrategyItem;
 import com.clsaa.janus.admin.entity.vo.v1.IpStrategyItemV1;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.service.IpStrategyItemService;
+import com.clsaa.janus.admin.validator.dto.IpStrategyItemDtoV1Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -24,6 +26,13 @@ import reactor.core.publisher.Mono;
 public class IpStrategyItemController {
     @Autowired
     private IpStrategyItemService ipStrategyItemService;
+    @Autowired
+    private IpStrategyItemDtoV1Validator ipStrategyItemDtoV1Validator;
+
+    @InitBinder(value = "ipStrategyItemDtoV1")
+    protected void initIpStrategyItemDtoV1ValidatorBinner(WebDataBinder binder) {
+        binder.setValidator(ipStrategyItemDtoV1Validator);
+    }
 
     /**
      * 创建IP访问策略项
@@ -96,10 +105,10 @@ public class IpStrategyItemController {
     /**
      * 分页查询IP访问策略项
      *
-     * @param loginUserId      登录用户id
-     * @param ipStrategyItemId IP访问策略项id
-     * @param pageNo           页号
-     * @param pageSize         页大小
+     * @param loginUserId  登录用户id
+     * @param ipStrategyId IP访问策略id
+     * @param pageNo       页号
+     * @param pageSize     页大小
      * @return {@link Mono<IpStrategyItem>}
      * @summary 根据id获取IP访问策略项
      * @author 任贵杰 812022339@qq.com
@@ -107,9 +116,9 @@ public class IpStrategyItemController {
      */
     @GetMapping(value = "/v1/IpStrategy/item/pagination")
     public Mono<Pagination<IpStrategyItemV1>> getIpStrategyItemV1Pagination(@RequestHeader(value = XHeaders.X_LOGIN_USER_ID) String loginUserId,
-                                                                           @RequestParam(value = "ipStrategyId") String ipStrategyId,
-                                                                           @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo,
-                                                                           @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
+                                                                            @RequestParam(value = "ipStrategyId") String ipStrategyId,
+                                                                            @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo,
+                                                                            @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
         return Mono.create(sink -> sink.success(this.ipStrategyItemService.getIpStrategyItemV1Pagination(loginUserId, ipStrategyId, pageNo, pageSize)));
     }
 

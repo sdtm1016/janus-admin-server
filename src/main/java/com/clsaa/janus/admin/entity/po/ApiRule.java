@@ -35,7 +35,7 @@ public class ApiRule implements Serializable {
      */
     private String environmentId;
     /**
-     * 类型,1为IP访问策略,2为流量限制,3为权限控制
+     * 类型,1为IP访问策略,2为流量限制,3为后端认证信息
      */
     private Integer type;
     /**

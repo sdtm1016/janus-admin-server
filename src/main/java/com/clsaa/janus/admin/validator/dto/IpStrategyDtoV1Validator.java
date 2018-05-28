@@ -19,7 +19,7 @@ import org.springframework.validation.Validator;
  * @since 2018/5/28
  */
 @Component
-public class IpStrategyDtoValidator implements Validator {
+public class IpStrategyDtoV1Validator implements Validator {
     @Autowired
     private IDValidator idValidator;
     @Autowired
