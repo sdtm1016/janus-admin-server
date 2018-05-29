@@ -27,23 +27,7 @@ import org.springframework.util.StringUtils;
 public class ServiceConfigService {
     @Autowired
     private ServiceConfigDao serviceConfigDao;
-
-    private void doValidation(String apiId, Integer type, Integer contentTypeCategory, String contentTypeValue, String address, Integer httpMethod, String path, Long timeout, Boolean mock, String mockResult) {
-        BizAssert.validParam(StringUtils.hasText(apiId), BizCodes.INVALID_PARAM.getCode(), "ApiId非法");
-        BizAssert.validParam(ServiceTypeEnum.getByCode(type) != null, BizCodes.INVALID_PARAM.getCode(), "后端服务类型非法");
-        BizAssert.validParam(ContentTypeCategoryEnum.getByCode(contentTypeCategory) != null, BizCodes.INVALID_PARAM.getCode(), "ContentType分类非法");
-        BizAssert.validParam(StringUtils.hasText(contentTypeValue), BizCodes.INVALID_PARAM.getCode(), "ContentType非法");
-        BizAssert.validParam(AddressValidator.isAddress(address), BizCodes.INVALID_PARAM.getCode(), "后端地址非法");
-        BizAssert.validParam(HttpMethodEnum.getByCode(httpMethod) != null, BizCodes.INVALID_PARAM.getCode(), "HTTP Method非法");
-        BizAssert.validParam(StringUtils.hasText(path), BizCodes.INVALID_PARAM.getCode(), "请求路径非法");
-        BizAssert.validParam(timeout > 0, BizCodes.INVALID_PARAM.getCode(), "超时时间错误");
-        if (mock) {
-            BizAssert.validParam(StringUtils.hasText(mockResult), BizCodes.INVALID_PARAM.getCode(), "MOCK数据非法");
-        } else {
-            BizAssert.validParam(StringUtils.isEmpty(mockResult), BizCodes.INVALID_PARAM.getCode(), "MOCK数据非法");
-        }
-    }
-
+    
     /**
      * 添加后端服务配置
      *
@@ -61,7 +45,6 @@ public class ServiceConfigService {
      */
     public String addServiceConfig(String apiId, Integer type, Integer contentTypeCategory, String contentTypeValue,
                                    String address, Integer httpMethod, String path, Long timeout, Boolean mock, String mockResult) {
-        this.doValidation(apiId, type, contentTypeCategory, contentTypeValue, address, httpMethod, path, timeout, mock, mockResult);
         ServiceConfig serviceConfig = new ServiceConfig(UUIDUtil.getUUID(), apiId, type, contentTypeCategory,
                 contentTypeValue, address, httpMethod, path, timeout, mock, mockResult);
         int count = 0;

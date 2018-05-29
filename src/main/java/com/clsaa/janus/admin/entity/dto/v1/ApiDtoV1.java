@@ -24,26 +24,18 @@ public class ApiDtoV1 implements Serializable {
     /**
      * 地域id,t_region.id
      */
-    @Length(min = 32, max = 32, message = "地域id格式不符合要求")
-    @NotEmpty(message = "地域id不能为空")
     private String regionId;
     /**
      * 分组id,t_group.id
      */
-    @Length(min = 32, max = 32, message = "API分组id格式不符合要求")
-    @NotEmpty(message = "API分组id不能为空")
     private String groupId;
     /**
      * 名称
      */
-    @Length(min = 4, max = 50, message = "API名称长度不符合要求,请控制在4-50个字符")
-    @Pattern(regexp = "^[^0-9]+$", message = "API名称格式不符合要求,分组名称必须唯一，支持汉字、英文字母、数字、英文格式的下划线，必须以英文字母或汉字开头，4~50个字符")
-    @NotEmpty(message = "API名称不能为空")
     private String name;
     /**
      * 描述
      */
-    @Length(max = 180, message = "分组名称长度不符合要求,请控制在0-180个字符")
     private String description;
     /**
      * 安全认证类型,1为无认证,2为公有云通用认证,3为Oauth2客户端模式认证
@@ -64,12 +56,10 @@ public class ApiDtoV1 implements Serializable {
     /**
      * 成功响应示例
      */
-    @Length(max = 255, message = "成功响应示例长度不符合要求,请控制在0-255个字符")
     private String successResultSample;
     /**
      * 失败响应示例
      */
-    @Length(max = 255, message = "成功响应示例长度不符合要求,请控制在0-255个字符")
     private String failResultSample;
     /**
      * 前端请求配置

@@ -30,20 +30,6 @@ public class RequestConfigService {
     private RequestConfigDao requestConfigDao;
 
     /**
-     * 参数校验函数
-     */
-    private void doValidation(Integer httpMethod, Integer mode, String path, String protocol, Integer wsType, Integer bodyFormat, String bodyDescription) {
-        BizAssert.validParam(StringUtils.hasText(bodyDescription) && bodyDescription.length() <= 180, BizCodes.INVALID_PARAM.getCode(), "bodyDescription非法");
-        BizAssert.validParam(HttpMethodEnum.getByCode(httpMethod) != null, BizCodes.INVALID_PARAM.getCode(), "HTTPMethod非法");
-        BizAssert.validParam(ParamModeEnum.getByCode(mode) != null, BizCodes.INVALID_PARAM.getCode(), "入参请求模式非法");
-        BizAssert.validParam(StringUtils.hasText(ProtocolEnum.getSupportedProtocols(protocol)), BizCodes.INVALID_PARAM.getCode(), "请求协议非法");
-        if (ProtocolEnum.enabledWS(protocol)) {
-            BizAssert.validParam(WSTypeEnum.getByCode(wsType) != null, BizCodes.INVALID_PARAM.getCode(), "双向通信类型非法");
-        }
-        BizAssert.validParam(BodyFormatEnum.getByCode(bodyFormat) != null, BizCodes.INVALID_PARAM.getCode(), "入参请求体格式类型非法");
-    }
-
-    /**
      * 创建前端到网关请求配置
      *
      * @param apiId           APIid
@@ -57,9 +43,7 @@ public class RequestConfigService {
      * @return 创建的请求配置的id
      */
     public String addRequestConfig(String apiId, Integer httpMethod, Integer mode, String path, String protocol, Integer wsType, Integer bodyFormat, String bodyDescription) {
-        //参数校验
-        this.doValidation(httpMethod, mode, path, protocol, wsType, bodyFormat, bodyDescription);
-        //创建对象
+       //创建对象
         RequestConfig requestConfig = new RequestConfig(UUIDUtil.getUUID(), apiId, httpMethod, mode, path,
                 ProtocolEnum.getSupportedProtocols(protocol), wsType, bodyFormat, bodyDescription);
         //存入数据库
@@ -104,8 +88,6 @@ public class RequestConfigService {
      * @return 更新是否成功
      */
     public boolean updateRequestConfigByApiId(String apiId, Integer httpMethod, Integer mode, String path, String protocol, Integer wsType, Integer bodyFormat, String bodyDescription) {
-        //参数校验
-        this.doValidation(httpMethod, mode, path, protocol, wsType, bodyFormat, bodyDescription);
         RequestConfig existRequestConfig = this.requestConfigDao.getByApiId(apiId);
         BizAssert.found(existRequestConfig != null, BizCodes.INVALID_PARAM.getCode(), "无法找到API对应请求配置");
         //创建对象

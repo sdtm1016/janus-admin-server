@@ -5,8 +5,10 @@ import com.clsaa.janus.admin.entity.dto.v1.ApiDeployDtoV1;
 import com.clsaa.janus.admin.entity.vo.v1.ApiDeployV1;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.service.ApiDeployService;
+import com.clsaa.janus.admin.validator.dto.ApiDeployDtoV1Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -23,6 +25,13 @@ import reactor.core.publisher.Mono;
 public class ApiDeployController {
     @Autowired
     private ApiDeployService apiDeployService;
+    @Autowired
+    private ApiDeployDtoV1Validator apiDeployDtoV1Validator;
+
+    @InitBinder
+    public void initApiDeployDtoV1ValidatorBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(apiDeployDtoV1Validator);
+    }
 
     /**
      * 创建API部署信息
@@ -56,7 +65,7 @@ public class ApiDeployController {
                                                  @PathVariable(value = "apiDeployId") String apiDeployId,
                                                  @Validated @RequestBody ApiDeployDtoV1 apiDeployDtoV1) {
         return Mono.create(sink -> sink.success(this.apiDeployService.updateApiDeployToOnline(loginUserId, apiDeployId,
-                apiDeployDtoV1.getApiId(),apiDeployDtoV1.getEnvironmentId(),apiDeployDtoV1.getDescription())));
+                apiDeployDtoV1.getApiId(), apiDeployDtoV1.getEnvironmentId(), apiDeployDtoV1.getDescription())));
     }
 
     /**

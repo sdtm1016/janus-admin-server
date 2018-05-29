@@ -5,7 +5,10 @@ import com.clsaa.janus.admin.entity.dto.v1.ApiDtoV1;
 import com.clsaa.janus.admin.entity.vo.v1.ApiV1;
 import com.clsaa.janus.admin.result.Pagination;
 import com.clsaa.janus.admin.service.ApiService;
+import com.clsaa.janus.admin.validator.dto.ApiDtoV1Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -22,6 +25,12 @@ import reactor.core.publisher.Mono;
 public class ApiController {
     @Autowired
     private ApiService apiService;
+    @Autowired
+    private ApiDtoV1Validator apiDtoV1Validator;
+    @InitBinder(value = "apiDtoV1")
+    public void initApiDtoV1ValidatorBinder(WebDataBinder webDataBinder){
+        webDataBinder.setValidator(this.apiDtoV1Validator);
+    }
 
     /**
      * 创建API
@@ -35,7 +44,7 @@ public class ApiController {
      */
     @PostMapping(value = "/v1/api")
     public Mono<String> addApiV1(@RequestHeader(value = XHeaders.X_LOGIN_USER_ID) String loginUserId,
-                                 @RequestBody ApiDtoV1 apiDtoV1) {
+                                 @Validated @RequestBody ApiDtoV1 apiDtoV1) {
         return Mono.create(monoSink -> monoSink.success(this.apiService.addApi(loginUserId, apiDtoV1)));
     }
 
@@ -68,7 +77,7 @@ public class ApiController {
     @PutMapping(value = "/v1/api/{apiId}")
     public Mono<Boolean> updateApiV1(@RequestHeader(value = XHeaders.X_LOGIN_USER_ID) String loginUserId,
                                      @PathVariable(value = "apiId") String apiId,
-                                     @RequestBody ApiDtoV1 apiDtoV1) {
+                                     @Validated @RequestBody ApiDtoV1 apiDtoV1) {
         return Mono.create(sink -> sink.success(this.apiService.updateApi(loginUserId, apiId, apiDtoV1)));
     }
 

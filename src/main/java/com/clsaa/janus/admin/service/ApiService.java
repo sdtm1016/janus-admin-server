@@ -59,22 +59,6 @@ public class ApiService {
     private ServiceParamService serviceParamService;
 
     /**
-     * 参数校验
-     */
-    private void doValidation(Integer authType, String signMethod, Integer visibility, Integer resultType) {
-        BizAssert.validParam(AuthTypeEnum.getByCode(authType) != null,
-                BizCodes.INVALID_PARAM.getCode(), "认证方式非法");
-        if (AuthTypeEnum.getByCode(authType) != AuthTypeEnum.无认证) {
-            BizAssert.validParam(SignMethodEnum.getByCode(signMethod) != null,
-                    BizCodes.INVALID_PARAM.getCode(), "签名方法非法");
-        }
-        BizAssert.validParam(ApiVisibilityEnum.getByCode(visibility) != null,
-                BizCodes.INVALID_PARAM.getCode(), "API可见性非法");
-        BizAssert.validParam(ResultTypeEnum.getByCode(resultType) != null,
-                BizCodes.INVALID_PARAM.getCode(), "API返回类型非法");
-    }
-
-    /**
      * 添加API信息
      *
      * @param apiDtoV1 API数据传输层对象
@@ -82,7 +66,6 @@ public class ApiService {
      */
     @Transactional(rollbackFor = Exception.class)
     public String addApi(String loginUserId, ApiDtoV1 apiDtoV1) {
-        this.doValidation(apiDtoV1.getAuthType(), apiDtoV1.getSignMethod(), apiDtoV1.getVisibility(), apiDtoV1.getResultType());
         //添加API信息
         Api api = BeanUtils.convertType(apiDtoV1, Api.class);
         api.setId(UUIDUtil.getUUID());
@@ -224,7 +207,6 @@ public class ApiService {
      * @return 是否修改成功
      */
     public boolean updateApi(String loginUserId, String apiId, ApiDtoV1 apiDtoV1) {
-        this.doValidation(apiDtoV1.getAuthType(), apiDtoV1.getSignMethod(), apiDtoV1.getVisibility(), apiDtoV1.getResultType());
         Api existApi = this.apiDao.getById(apiId);
         BizAssert.found(existApi != null, BizCodes.INVALID_PARAM.getCode(), "API不存在");
         //修改API信息
