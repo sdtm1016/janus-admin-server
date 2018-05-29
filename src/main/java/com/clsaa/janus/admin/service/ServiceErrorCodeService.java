@@ -100,4 +100,14 @@ public class ServiceErrorCodeService {
         return this.serviceErrorCodeDao.getListByApiId(apiId)
                 .stream().map(s -> BeanUtils.convertType(s, ServiceErrorCodeV1.class)).collect(Collectors.toList());
     }
+
+    /**
+     * 根据APIId获取其服务错误码
+     *
+     * @param apiId APIId
+     * @return {@link List<ServiceErrorCodeV1>}
+     */
+    public List<ServiceErrorCode> getServiceErrorCodeListByApiId(String apiId) {
+        return this.serviceErrorCodeDao.getListByApiId(apiId);
+    }
 }

@@ -97,4 +97,14 @@ public class ServiceParamService {
         return this.serviceParamDao.getListByApiId(apiId)
                 .stream().map(s -> BeanUtils.convertType(s, ServiceParamV1.class)).collect(Collectors.toList());
     }
+
+    /**
+     * 根据APIId获取其后端服务参数
+     *
+     * @param apiId APIId
+     * @return {@link List<ServiceParam>}
+     */
+    public List<ServiceParam> getServiceParamListByApiId(String apiId) {
+        return this.serviceParamDao.getListByApiId(apiId);
+    }
 }

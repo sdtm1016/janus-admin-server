@@ -11,7 +11,56 @@
         <result column="description" property="description"/>
         <result column="ctime" property="ctime"/>
         <result column="cuser" property="cuser"/>
+        <result column="mtime" property="mtime"/>
+        <result column="muser" property="muser"/>
         <result column="status" property="status"/>
     </resultMap>
-
+    <insert id="add">
+        INSERT INTO `t_api_deploy` (`id`, `api_id`, `environment_id`, `snap_api_id`, `version`, `description`,
+                                    `ctime`, `cuser`, `mtime`, `muser`, `status`)
+        VALUES (#{id}, #{apiId}, #{environmentId}, #{snapApiId}, #{version}, #{description},
+            current_timestamp, #{cuser}, current_timestamp, #{muser}, #{status});
+    </insert>
+    <update id="updateStatusByApiIdAndEnvId">
+        UPDATE `t_api_deploy`
+        SET
+            `status` = #{statusTo},
+            `mtime`  = current_timestamp,
+            `muser`  = #{muser}
+        WHERE `api_id` = #{apiId}
+              AND `environment_id` = #{environmentId}
+              AND `status` != #{statusTo}
+    </update>
+    <update id="update">
+        UPDATE `t_api_deploy`
+        SET
+            `description` = #{description},
+            `status`      = #{status},
+            `mtime`       = current_timestamp,
+            `muser`       = #{muser}
+        WHERE `id` = #{id}
+    </update>
+    <select id="getPaginationCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `t_api_deploy`
+        WHERE `api_id` = #{apiId}
+        <if test="environmentId!=null">
+            AND `environment_id` = #{environmentId}
+        </if>
+    </select>
+    <select id="getPaginationList" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api_deploy`
+        WHERE `api_id` = #{apiId}
+        <if test="environmentId!=null">
+            AND `environment_id` = #{environmentId}
+        </if>
+        ORDER BY `ctime` ASC
+        LIMIT #{rowOffset},#{pageSize}
+    </select>
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT *
+        FROM `t_api_deploy`
+        WHERE `id` = #{id}
+    </select>
 </mapper>

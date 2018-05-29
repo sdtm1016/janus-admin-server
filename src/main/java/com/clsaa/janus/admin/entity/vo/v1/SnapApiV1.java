@@ -1,6 +1,5 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo.v1;
 
-import com.clsaa.janus.admin.entity.vo.v1.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,14 +9,14 @@ import java.util.List;
 
 
 /**
- * API快照信息持久层对象
+ * API快照信息视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class SnapApi implements Serializable {
+public class SnapApiV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -70,16 +69,31 @@ public class SnapApi implements Serializable {
      */
     private Timestamp ctime;
     /**
-     * 创建人
-     */
-    private String cuser;
-    /**
      * 修改时间
      */
     private Timestamp mtime;
     /**
-     * 修改人
+     * 请求配置快照
      */
-    private String muser;
-
+    private SnapRequestConfigV1 snapRequestConfig;
+    /**
+     * 请求参数快照列表
+     */
+    private List<SnapRequestParamV1> snapRequestParams;
+    /**
+     * 后端服务配置快照
+     */
+    private SnapServiceConfigV1 snapServiceConfig;
+    /**
+     * 后端服务常量参数快照列表
+     */
+    private List<SnapServiceConstParamV1> snapServiceConstParams;
+    /**
+     * 后端服务错误码快照列表
+     */
+    private List<SnapServiceErrorCodeV1> snapServiceErrorCodes;
+    /**
+     * 后端服务参数快照列表
+     */
+    private List<SnapServiceParamV1> snapServiceParams;
 }

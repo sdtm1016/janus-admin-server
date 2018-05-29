@@ -3,7 +3,6 @@ package com.clsaa.janus.admin.service;
 import com.clsaa.janus.admin.dao.SnapRequestConfigDao;
 import com.clsaa.janus.admin.entity.po.RequestConfig;
 import com.clsaa.janus.admin.entity.po.SnapRequestConfig;
-import com.clsaa.janus.admin.entity.vo.v1.RequestConfigV1;
 import com.clsaa.janus.admin.entity.vo.v1.SnapRequestConfigV1;
 import com.clsaa.janus.admin.util.BeanUtils;
 import com.clsaa.janus.admin.util.UUIDUtil;
@@ -29,13 +28,13 @@ public class SnapRequestConfigService {
     /**
      * 创建前端到网关请求配置快照
      *
-     * @param apiId     要创建快照的API主键id
      * @param snapApiId 要创建的API快照id
+     * @param apiId     要创建快照的API主键id
      * @return 创建的请求配置快照id
      */
-    public String addRequestConfig(String apiId, String snapApiId) {
+    public String addSnapRequestConfig(String snapApiId, String apiId) {
         RequestConfig requestConfig = this.requestConfigService.getRequestConfigByApiId(apiId);
-        SnapRequestConfig snapRequestConfig = BeanUtils.convertType(requestConfig,SnapRequestConfig.class);
+        SnapRequestConfig snapRequestConfig = BeanUtils.convertType(requestConfig, SnapRequestConfig.class);
         snapRequestConfig.setSnapApiId(snapApiId);
         snapRequestConfig.setId(UUIDUtil.getUUID());
         this.snapRequestConfigDao.add(snapRequestConfig);

@@ -1,4 +1,4 @@
-package com.clsaa.janus.admin.entity.po;
+package com.clsaa.janus.admin.entity.vo.v1;
 
 
 import lombok.Getter;
@@ -7,14 +7,14 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * 服务端可能抛出的错误码持久层对象
+ * 服务端可能抛出的错误码快照视图层对象
  *
  * @author 任贵杰 812022339@qq.com
  * @since 2018-05-17
  */
 @Getter
 @Setter
-public class ServiceErrorCode implements Serializable {
+public class SnapServiceErrorCodeV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,10 +22,6 @@ public class ServiceErrorCode implements Serializable {
      * 主键id
      */
     private String id;
-    /**
-     * APIid,t_api.id
-     */
-    private String apiId;
     /**
      * 错误码
      */

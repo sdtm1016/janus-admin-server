@@ -100,4 +100,14 @@ public class ServiceConfigService {
     public ServiceConfigV1 getServiceConfigV1ByApiId(String apiId) {
         return BeanUtils.convertType(this.serviceConfigDao.getByApiId(apiId), ServiceConfigV1.class);
     }
+
+    /**
+     * 根据APIId查询后端服务配置
+     *
+     * @param apiId APIId
+     * @return {@link ServiceConfig}
+     */
+    public ServiceConfig getServiceConfigByApiId(String apiId) {
+        return this.serviceConfigDao.getByApiId(apiId);
+    }
 }

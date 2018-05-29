@@ -4,6 +4,7 @@ import com.clsaa.janus.admin.config.BizCodes;
 import com.clsaa.janus.admin.constant.common.ParamLocationEnum;
 import com.clsaa.janus.admin.dao.ServiceConstParamDao;
 import com.clsaa.janus.admin.entity.po.ServiceConstParam;
+import com.clsaa.janus.admin.entity.po.SnapServiceConstParam;
 import com.clsaa.janus.admin.entity.vo.v1.ServiceConstParamV1;
 import com.clsaa.janus.admin.result.BizAssert;
 import com.clsaa.janus.admin.util.BeanUtils;
@@ -96,11 +97,21 @@ public class ServiceConstParamService {
     /**
      * 根据APIId查询其常量参数列表
      *
-     * @param apiId
+     * @param apiId APIid
      * @return {@link List<ServiceConstParamV1>}
      */
     public List<ServiceConstParamV1> getServiceConstParamV1ListByApiId(String apiId) {
         return this.serviceConstParamDao.getListByApiId(apiId)
                 .stream().map(s -> BeanUtils.convertType(s, ServiceConstParamV1.class)).collect(Collectors.toList());
+    }
+
+    /**
+     * 根据APIId查询其常量参数列表
+     *
+     * @param apiId APIid
+     * @return {@link List<ServiceConstParam>}
+     */
+    public List<ServiceConstParam> getServiceConstParamListByApiId(String apiId) {
+        return this.serviceConstParamDao.getListByApiId(apiId);
     }
 }

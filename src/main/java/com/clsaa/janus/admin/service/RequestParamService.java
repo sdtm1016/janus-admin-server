@@ -102,4 +102,14 @@ public class RequestParamService {
         return this.requestParamDao.getListByApiId(apiId)
                 .stream().map(r -> BeanUtils.convertType(r, RequestParamV1.class)).collect(Collectors.toList());
     }
+
+    /**
+     * 根据APIid查询请求参数列表
+     *
+     * @param apiId APIid
+     * @return {@link List<RequestParam>}
+     */
+    public List<RequestParam> getRequestParamListByApiId(String apiId) {
+        return this.getRequestParamListByApiId(apiId);
+    }
 }

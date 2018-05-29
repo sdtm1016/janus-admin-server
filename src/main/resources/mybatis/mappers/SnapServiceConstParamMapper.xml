@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsaa.janus.admin.dao.SnapServiceConstParamDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clsaa.janus.admin.entity.po.SnapServiceConstParam">
+        <id column="id" property="id"/>
+        <result column="snap_api_id" property="snapApiId"/>
+        <result column="name" property="name"/>
+        <result column="value" property="value"/>
+        <result column="location" property="location"/>
+        <result column="description" property="description"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+    <insert id="addBatch">
+        INSERT INTO `t_snap_service_const_param` (`id`, `snap_api_id`, `name`, `value`, `location`, `description`,
+        `sort`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.snapApiId}, #{item.name}, #{item.value},
+            #{item.location}, #{item.description}, #{item.sort})
+        </foreach>
+    </insert>
+    <select id="getListBySnapApiId" resultMap="BaseResultMap">
+        select *
+        from `t_snap_service_const_param`
+        where `snap_api_id` = #{snapApiId}
+        order by `sort` asc
+    </select>
+</mapper>
